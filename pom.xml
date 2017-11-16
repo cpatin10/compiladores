@@ -1,0 +1,150 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>co.edu.eafit.dis.st0270.s2016.catalin</groupId>
+  <artifactId>catalin</artifactId>
+  <packaging>jar</packaging>
+  <version>1.0-SNAPSHOT</version>
+  <name>catalin</name>
+  <url>http://maven.apache.org</url>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.antlr</groupId>
+      <artifactId>antlr4-maven-plugin</artifactId>
+      <version>4.5.3</version>
+      <type>maven-plugin</type>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <plugins>
+
+      <plugin>
+	<groupId>org.antlr</groupId>
+        <artifactId>antlr4-maven-plugin</artifactId>
+        <version>4.5.3</version>
+        <executions>
+          <execution>
+            <id>antlr</id>
+            <goals>
+              <goal>antlr4</goal>
+            </goals>
+            <configuration>
+              <conversionTimeout>10000</conversionTimeout>
+              <debug>false</debug>
+              <dfa>false</dfa>
+              <nfa>false</nfa>
+              <libDirectory>src/main/antlr4/imports</libDirectory>
+              <messageFormat>antlr</messageFormat>
+              <outputDirectory>src/main/java/co/edu/eafit/dis/st0270/s2016/catalin</outputDirectory>
+              <printGrammar>false</printGrammar>
+              <profile>false</profile>
+              <report>false</report>
+              <sourceDirectory>src/main/antlr4</sourceDirectory>
+              <trace>false</trace>
+              <verbose>true</verbose>
+              <visitor>true</visitor>
+	      <listener>true</listener>
+              <filesets>
+                <fileset>
+                  <includes>
+                    <include>Catalin.g4</include>
+                  </includes>
+                </fileset>
+              </filesets>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+
+      <plugin>
+        <artifactId>maven-clean-plugin</artifactId>
+        <version>2.6.1</version>
+        <configuration>
+          <filesets>
+            <fileset>
+              <directory>src/main/java/co/edu/eafit/dis/st0270/s2016/catalin</directory>
+              <includes>
+		<include>Catalin*</include>
+              </includes>
+              <followSymlinks>false</followSymlinks>
+            </fileset>
+          </filesets>
+        </configuration>
+
+      </plugin>
+      <plugin>
+	<groupId>org.apache.maven.plugins</groupId>
+	<artifactId>maven-compiler-plugin</artifactId>
+	<version>3.5.1</version>
+	<configuration>
+	  <source>1.8</source>
+	  <target>1.8</target>
+	</configuration>
+      </plugin>
+      
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>exec-maven-plugin</artifactId>
+        <version>1.4.0</version>
+        <executions>
+
+          <execution>
+	    <id>parser</id>
+            <goals>
+              <goal>java</goal>
+            </goals>
+	    <configuration>
+	      <mainClass>co.edu.eafit.dis.st0270.s2016.catalin.ParserMain</mainClass>
+            </configuration>
+          </execution>
+
+          <execution>
+	    <id>lexer</id>
+            <goals>
+              <goal>java</goal>
+            </goals>
+	    <configuration>
+	      <mainClass>co.edu.eafit.dis.st0270.s2016.catalin.LexerMain</mainClass>
+            </configuration>
+          </execution>
+
+          <execution>
+	    <id>listener</id>
+            <goals>
+              <goal>java</goal>
+            </goals>
+	    <configuration>
+	      <mainClass>co.edu.eafit.dis.st0270.s2016.catalin.ListenerMain</mainClass>
+            </configuration>
+          </execution>
+
+          <execution>
+	    <id>visitor</id>
+            <goals>
+              <goal>java</goal>
+            </goals>
+	    <configuration>
+	      <mainClass>co.edu.eafit.dis.st0270.s2016.catalin.VisitorMain</mainClass>
+            </configuration>
+          </execution>
+
+        </executions>
+      </plugin>
+
+    </plugins>
+  </build>
+
+</project>

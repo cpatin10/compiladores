@@ -1,0 +1,15 @@
+<grupo>
+  <nombre>catalin</nombre>
+  <url>https://svn.riouxsvn.com/27016catalin</url>
+  <miembro>
+    <nombre>Catalina Patiño Forero</nombre>
+    <codigo>201527501010</codigo>
+    <email>cpatin10@eafit.edu.co</email>
+  </miembro>
+  <miembro>
+    <nombre>Mateo Agudelo Toro</nombre>
+    <codigo>201527507010</codigo>
+    <email>magude29@eafit.edu.co</email>
+  </miembro>
+  <mainclass clase="MainCatalin"/>
+</grupo>
